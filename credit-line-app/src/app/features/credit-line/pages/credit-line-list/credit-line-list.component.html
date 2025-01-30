@@ -1,0 +1,26 @@
+<h2 class="section-title">Líneas de Crédito</h2>
+
+<button [routerLink]="['/credit-lines/create']" class="create-btn">Crear Nueva Línea de Crédito</button>
+
+<table class="credit-lines-table">
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Monto Aprobado</th>
+      <th>Monto Utilizado</th>
+      <th>Monto Disponible</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let credit of creditLines">
+      <td>{{ credit.customerName }}</td>
+      <td>{{ credit.approvedAmount | currency : getCurrencyLabel(credit.currency)}}</td>
+      <td>{{ credit.approvedAmount - credit.availableAmount | currency : getCurrencyLabel(credit.currency) }}</td>
+      <td>{{ credit.availableAmount | currency : getCurrencyLabel(credit.currency) }}</td>
+      <td>
+        <a [routerLink]="['/credit-lines', credit.id]" class="view-details">Ver Detalles</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

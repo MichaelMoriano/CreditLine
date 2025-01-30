@@ -1,0 +1,13 @@
+<h2 class="section-title">Detalles de la Línea de Crédito</h2>
+
+<div *ngIf="creditLine" class="credit-details">
+  <p><strong>Cliente:</strong> {{ creditLine.customerName }}</p>
+  <p><strong>Monto Aprobado:</strong> {{ creditLine.approvedAmount | currency }}</p>
+  <p><strong>Monto Utilizado:</strong> {{ creditLine.approvedAmount - creditLine.availableAmount| currency }}</p>
+  <p><strong>Monto Disponible:</strong> {{ creditLine.availableAmount | currency }}</p>
+
+  <div class="action-buttons">
+    <button [routerLink]="['/credit-lines/consumption', creditLine.id]" class="disburse-btn">Desembolsar</button>
+    <button [routerLink]="['/credit-lines']" class="back-btn">Volver</button>
+  </div>
+</div>

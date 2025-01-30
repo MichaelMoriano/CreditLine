@@ -1,0 +1,32 @@
+<div class="container">
+    <h2>Crear Línea de Crédito</h2>
+    <form [formGroup]="creditLineForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="customerName">Nombre del Cliente</label>
+        <input id="customerName" formControlName="customerName" class="form-control" />
+        <div *ngIf="creditLineForm.get('customerName')?.touched && creditLineForm.get('customerName')?.invalid" class="text-danger">
+          El nombre del cliente es obligatorio.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="approvedAmount">Monto Aprobado</label>
+        <input id="approvedAmount" formControlName="approvedAmount" class="form-control" type="number" />
+        <div *ngIf="creditLineForm.get('approvedAmount')?.touched && creditLineForm.get('approvedAmount')?.invalid" class="text-danger">
+          El monto aprobado es obligatorio y debe ser mayor a 0.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="currency">Moneda</label>
+        <select id="currency" formControlName="currency" class="form-control">
+          <option value="SOL">S/</option>
+          <option value="USD">USD</option>
+        </select>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="creditLineForm.invalid">Crear Línea de Crédito</button>
+      <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancelar</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,33 @@
+<h2 class="section-title">Línea de Crédito Activa</h2>
+
+<div class="credit-details">
+  <p><strong>Cliente:</strong> {{ creditLine?.customerName }}</p>
+  <p><strong>Monto Aprobado:</strong> {{ creditLine?.approvedAmount | currency:getCurrencyLabel(creditLine?.currency) }}</p>
+  <p><strong>Monto Utilizado:</strong> {{ (creditLine?.approvedAmount - creditLine?.availableAmount) | currency:getCurrencyLabel(creditLine?.currency) }}</p>
+  <p><strong>Monto Disponible:</strong> {{ creditLine?.availableAmount | currency:getCurrencyLabel(creditLine?.currency) }}</p>
+</div>
+
+<h3 class="section-title">Realizar Desembolso</h3>
+
+<form [formGroup]="creditLineForm" (ngSubmit)="onSubmit()" class="disbursement-form">
+  <div class="form-group">
+    <label for="amount">Monto a desembolsar</label>
+    <input id="amount" formControlName="amount" type="number" (input)="calculateTotal()"/>
+  </div>
+
+  <div class="form-group">
+    <label for="currency">Moneda en el que el cliente requiere el dinero:</label>
+    <select id="currency" formControlName="currency" (change)="calculateTotal()">
+      <option value="SOL">Soles (S/)</option>
+      <option value="USD">Dólares ($)</option>
+    </select>
+  </div>
+
+  <p>Tipo de cambio actual: {{ exchangeRate | number:'1.2-2' }}</p>
+  <p>Monto a entregar al cliente: {{ totalAmount | currency: getCurrencyLabel(this.creditLineForm.value.currency)}}</p>
+
+  <div class="form-buttons">
+    <button type="submit" [disabled]="creditLineForm.invalid" class="submit-btn">Realizar Desembolso</button>
+    <button [routerLink]="['/credit-lines']" class="back-btn">Volver al listado de líneas de crédito</button>
+  </div>
+</form>

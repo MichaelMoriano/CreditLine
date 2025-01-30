@@ -1,0 +1,63 @@
+/* Título de la sección */
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Botón para crear nueva línea de crédito */
+.create-btn {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.create-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para la tabla */
+.credit-lines-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.credit-lines-table th,
+.credit-lines-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.credit-lines-table th {
+    background-color: #f7f7f7;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.credit-lines-table td {
+    font-size: 1rem;
+}
+
+.credit-lines-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilo para los enlaces de "Ver Detalles" */
+.view-details {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+}
+
+.view-details:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
